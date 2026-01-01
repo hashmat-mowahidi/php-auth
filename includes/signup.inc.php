@@ -1,0 +1,44 @@
+<?php
+
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    $username = $_POST["username"];
+    $u_password = $_POST["u_password"];
+    $email = $_POST["email"];
+
+    try {
+        require_once 'dbh.inc.php';
+        require_once 'signup_model.inc.php';
+        require_once 'signup_view.inc.php';
+        require_once 'signup_controler.inc.php';
+        require_once 'config_session.inc.php';
+
+        // Error handlers
+        $errors = [];
+        if (is_input_empty($username, $u_password, $email)) {
+            $errors["empty_input"] = "Fill in all fields!";
+        }
+
+        if (is_email_invalid($email)) {
+            $errors["invalid_email"] = "Invalid email used!";
+        }
+
+        if (is_username_exist($pdo, $username)) {
+            $errors["username_exist"] = "Username already exist!";
+        }
+
+        if (is_email_exist($pdo, $email)) {
+            $errors["email_exist"] = "Email already exist!";
+            header("Location: ../index.php");
+        }
+
+        if ($errors) {
+            $_SESSION["errors_singup"] = $errors;
+        }
+
+    } catch (PDOException $e) {
+        die("Query Failed: " . $e->getMessage());
+    }
+} else {
+    header("Location: ../index.php");
+    die();
+}
