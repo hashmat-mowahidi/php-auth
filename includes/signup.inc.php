@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $email = $_POST["email"];
 
     try {
-        require_once 'dbh.inc.php';
+        require_once '../config/db.php';
         require_once 'signup_model.inc.php';
         require_once 'signup_view.inc.php';
         require_once 'signup_controller.inc.php';

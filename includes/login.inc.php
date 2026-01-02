@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
 
     try {
-        require_once 'dbh.inc.php';
+        require_once '../config/db.php';
         require_once 'login_model.inc.php';
         require_once 'login_view.inc.php';
         require_once 'login_controller.inc.php';
