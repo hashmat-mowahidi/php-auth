@@ -18,25 +18,56 @@ require_once 'includes/login_view.inc.php';
 </header>
 
 <body>
-    <h3>Login</h3>
-    <form action="includes/login.inc.php" method="post">
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="u_password" placeholder="Password">
-        <button type="submit">Login</button>
-    </form>
+
+    <h3>
+        <?php
+        output_username();
+        ?>
+    </h3>
+
     <?php
-        check_login_errors();
+    if (!isset($_SESSION["user_id"])) {
+    ?>
+        <h3>Login</h3>
+        <form action="includes/login.inc.php" method="post">
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="u_password" placeholder="Password">
+            <button type="submit">Login</button>
+        </form>
+    <?php
+    }
+    ?>
+    <?php
+    check_login_errors();
     ?>
 
-    <h3>Signup</h3>
-    <form action="includes/signup.inc.php" method="post">
-        <?php
-        signup_inputs();
-        ?>
-        <button type="submit">Signup</button>
-    </form>
+    <?php
+    if (!isset($_SESSION["user_id"])) {
+    ?>
+        <h3>Signup</h3>
+        <form action="includes/signup.inc.php" method="post">
+            <?php
+            signup_inputs();
+            ?>
+            <button type="submit">Signup</button>
+        </form>
+
+    <?php
+    }
+    ?>
+
     <?php
     check_signup_errors();
+    ?>
+
+    <?php
+    if (isset($_SESSION["user_id"])) {
+    ?>
+        <form action="includes/logout.inc.php" method="post">
+            <button type="submit">Logout</button>
+        </form>
+    <?php
+    }
     ?>
 </body>
 
