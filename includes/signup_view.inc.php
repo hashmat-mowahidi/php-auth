@@ -42,6 +42,12 @@ function check_signup_errors()
 
         unset($_SESSION['errors_singup']);
     } else if (isset($_GET["signup"]) && $_GET["signup"] === "success") {
+        if (isset($_SESSION['errors_singup'])) {
+            unset($_SESSION['errors_singup']);
+        }
+        if (isset($_SESSION['errors_singup'])) {
+            unset($_SESSION['signup_data']);
+        }
         echo "<br>";
         echo '<p class="result">Signup success!</p>';
     }
