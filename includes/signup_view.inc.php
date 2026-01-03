@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 function signup_inputs()
 {
-
     if (
         isset($_SESSION["signup_data"]["username"]) &&
         !isset($_SESSION["errors_singup"]["username_exist"])
@@ -27,6 +26,14 @@ function signup_inputs()
     } else {
         echo '<input type="text" name="email" placeholder="E-Mail" autocomplete="off">';
     }
+
+    if (isset($_SESSION["signup_data"]["username"])) {
+        unset($_SESSION["signup_data"]["username"]);
+    }
+
+    if (isset($_SESSION["signup_data"]["email"])) {
+        unset($_SESSION["signup_data"]["email"]);
+    }
 }
 
 function check_signup_errors()
@@ -39,16 +46,13 @@ function check_signup_errors()
             echo '<p class="error">' . $error . '</p>';
         }
 
-
         unset($_SESSION['errors_singup']);
-    } else if (isset($_GET["signup"]) && $_GET["signup"] === "success") {
-        if (isset($_SESSION['errors_singup'])) {
-            unset($_SESSION['errors_singup']);
-        }
-        if (isset($_SESSION['errors_singup'])) {
-            unset($_SESSION['signup_data']);
-        }
+    } else if (
+        isset($_GET["signup"]) && $_GET["signup"] === "success" &&
+        isset($_SESSION['signup_success'])
+    ) {
         echo "<br>";
         echo '<p class="result">Signup success!</p>';
+        unset($_SESSION['signup_success']);
     }
 }

@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $errors = [];
         if (is_input_empty($username, $u_password, $email)) {
             $errors["empty_input"] = "Fill in all fields!";
-        } 
+        }
 
         if (is_email_invalid($email)) {
             $errors["invalid_email"] = "Invalid email used!";
@@ -45,12 +45,15 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         }
 
         create_user($pdo, $username, $u_password, $email);
+        if (isset($_SESSION['signup_data'])) {
+            unset($_SESSION['signup_data']);
+        }
+        $_SESSION['signup_success'] = true;
         header("Location: ../index.php?signup=success");
 
         $pdo = null;
         $stmt = null;
         die();
-
     } catch (PDOException $e) {
         die("Query Failed: " . $e->getMessage());
     }
