@@ -5,7 +5,7 @@
 
 </div>
 
-A simple authentication system built with core PHP (no framework), demonstrating user registration, login, logout, and session-based authentication.
+A simple authentication system built with core PHP (no framework), demonstrating user registration, login, logout and session-based authentication.
 
 ## 📌 Features
 
@@ -27,11 +27,11 @@ A simple authentication system built with core PHP (no framework), demonstrating
 - Apache (XAMPP)
 
 
-# ⚙️ Configuration & Setup
+## ⚙️ Configuration & Setup
 
-## 1️⃣ Clone the Repository
+### 1️⃣ Clone the Repository
 
-## 2️⃣ Server Requirements
+### 2️⃣ Server Requirements
 
 - XAMPP installed
 
@@ -40,11 +40,11 @@ A simple authentication system built with core PHP (no framework), demonstrating
 - MySQL running
 
 
-## 3️⃣ Database Configuration
+### 3️⃣ Database Configuration
 
 Edit the database configuration file:
 
-### config/db.php:
+#### config/db.php:
 ```md
 
 <?php
@@ -53,16 +53,15 @@ $username = "root";
 $password = "";
 $dbname = "php_auth";
 
----
+```md
 
-## 📌 Important:
+#### 📌 Important:
 
-You do NOT need to manually create the database
+- You do NOT need to manually create the database
+- The database and required tables are created automatically when index.php is run for the first time
 
-The database and required tables are created automatically when index.php is run for the first time
 
-
-## 4️⃣ Run the Project
+### 4️⃣ Run the Project
 
 Move the project folder to:
 
