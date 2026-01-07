@@ -33,32 +33,27 @@ A simple authentication system built with core PHP (no framework), demonstrating
 
 ## 2️⃣ Server Requirements
 
-1. XAMPP installed
+- XAMPP installed
 
-2. Apache running
+- Apache running
 
-3. MySQL running
+- MySQL running
 
 
 ## 3️⃣ Database Configuration
 
 Edit the database configuration file:
 
-### PHP:
-config/db.php
-
-
-Example:
-
-### PHP:
+### config/db.php:
 ```md
-```php
+
 <?php
 $host = "localhost";
 $username = "root";
 $password = "";
 $dbname = "php_auth";
 
+---
 
 ## 📌 Important:
 
