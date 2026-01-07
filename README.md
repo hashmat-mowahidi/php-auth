@@ -44,16 +44,15 @@ cd php-auth
 
 ### 3️⃣ Database Configuration
 
-Edit the database configuration file:
+#### Edit the database configuration file:
 
 #### config/db.php:
-```md
 ```php
 <?php
-$host = "localhost";
-$username = "root";
-$password = "";
-$dbname = "php_auth";
+$host = 'localhost';
+$dbname = 'user_auth';
+$dbusername = 'root';
+$dbpassword = '';
 
 ```
 
@@ -68,15 +67,16 @@ $dbname = "php_auth";
 1. Move the project folder to:
 
 ```md
-```text
+
 xampp/htdocs/
+
 ```
 
 
 2. Open your browser and visit:
-```md
-```text
 
-http://localhost/project-folder/index.php
+```md
+
+http://localhost/php-auth/index.php
 
 ```
